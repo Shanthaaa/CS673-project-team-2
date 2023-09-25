@@ -1,0 +1,1 @@
+Please refer to https://github.com/muodov/kociemba, which has detailed input requirements and explanation of output.
