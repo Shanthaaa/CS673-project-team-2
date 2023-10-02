@@ -1,3 +1,5 @@
+# algorithm.py
+
 import kociemba
 def solve(cube_state: str) -> str:
     try:
