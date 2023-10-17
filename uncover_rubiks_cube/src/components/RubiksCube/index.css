@@ -1,0 +1,25 @@
+#container{
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.up{
+  position: absolute;
+  left: 1000px;
+  top: 500px;
+}
+.down{
+  position: absolute;
+  left: 1050px;
+  top: 500px;
+}
+.left{
+  position: absolute;
+  left: 1100px;
+  top: 500px;
+}
+.right{
+  position: absolute;
+  left: 1150px;
+  top: 500px;
+}

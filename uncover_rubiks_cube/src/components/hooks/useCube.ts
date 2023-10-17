@@ -12,8 +12,10 @@ export default function useCube (
   const cube = new THREE.Mesh(geometry, material);
   cube.position.set(axes[0], axes[1], axes[2]);
   const box = new THREE.BoxHelper(cube, 0x000000);
+  const axis = {x: axes[0], y: axes[1], z: axes[2]};
   return {
     cube,
     box,
+    axis
   };
 }
