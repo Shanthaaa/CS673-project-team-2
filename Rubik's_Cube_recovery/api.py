@@ -3,9 +3,16 @@
 from error_handler import handle_value_error, handle_key_error, handle_general_error
 from flask import Flask, request, jsonify
 from algorithm import solve
-from config import SERVER_HOST, SERVER_PORT, API_VERSION, DEBUG  
+from config import SERVER_HOST, SERVER_PORT, API_VERSION, DEBUG
+import os
 
 app = Flask(__name__)
+
+# file path
+CUBE_STATUS_FILE = os.path.join(os.path.dirname(__file__), 'cube_status.txt')
+
+# Default cube state
+DEFAULT_CUBE_STATUS = "UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB"
 
 @app.route(f'/{API_VERSION}/solve', methods=['POST'])
 def solve_cube():
@@ -21,6 +28,41 @@ def solve_cube():
         return jsonify(solution=solution)
     except ValueError as e:
         return jsonify(error=str(e)), 400
+
+# 1. Read Rubik's Cube Status
+@app.route(f'/{API_VERSION}/get_cube_status', methods=['GET'])
+def get_cube_status():
+    try:
+        with open(CUBE_STATUS_FILE, 'r') as f:
+            status = f.read().strip()
+        return jsonify(cube_status=status)
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+
+# 2. Modify the status of the Rubik's Cube
+@app.route(f'/{API_VERSION}/set_cube_status', methods=['POST'])
+def set_cube_status():
+    if not request.json or 'cube_status' not in request.json:
+        return jsonify(error="Missing cube_status in request"), 400
+    new_status = request.json['cube_status']
+    if len(new_status) != 54:
+        return jsonify(error="Invalid cube_status length"), 400
+    try:
+        with open(CUBE_STATUS_FILE, 'w') as f:
+            f.write(new_status)
+        return jsonify(message="Cube status updated successfully")
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+
+# 3. Reset cube status
+@app.route(f'/{API_VERSION}/reset_cube_status', methods=['POST'])
+def reset_cube_status():
+    try:
+        with open(CUBE_STATUS_FILE, 'w') as f:
+            f.write(DEFAULT_CUBE_STATUS)
+        return jsonify(message="Cube status reset successfully")
+    except Exception as e:
+        return jsonify(error=str(e)), 500
 
 @app.errorhandler(ValueError)
 def value_error_handler(error):
