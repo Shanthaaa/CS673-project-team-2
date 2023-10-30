@@ -1,0 +1,25 @@
+#container{
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.exit-button{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.scramble-button{
+  position: absolute;
+  top: 50px;
+  right: 5px;
+}
+.reset-button{
+  position: absolute;
+  top: 95px;
+  right: 5px;
+}
+.hint-button{
+  position: absolute;
+  top: 140px;
+  right: 5px;
+}
