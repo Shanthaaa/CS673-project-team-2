@@ -7,16 +7,17 @@ import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
 import { OutlinePass } from "three/examples/jsm/postprocessing/OutlinePass.js";
 import { FXAAShader } from "three/examples/jsm/shaders/FXAAShader.js";
-import { FloatButton } from "antd";
+import { FloatButton, Button } from "antd";
 import {
   ArrowUpOutlined,
   ArrowDownOutlined,
   ArrowLeftOutlined,
   ArrowRightOutlined,
 } from "@ant-design/icons";
-import useCreateChildren from "../hooks/useCreateChildren";
-import updatePosition from "../utils/updatePosition";
+import useCreateChildren from "../../hooks/useCreateChildren";
+import updatePosition from "../../utils/updatePosition";
 import type { CubeChild } from "../../types/common";
+import { useNavigate } from "react-router-dom";
 
 const initalGroup: THREE.Group[] = [];
 for (let i = 0; i < 27; i++) {
@@ -31,7 +32,7 @@ export default function RubiksCube() {
   const [group, setGroup] = useState(new THREE.Group());
   const [rotatedGroup, setRotatedGroup] = useState(initalGroup);
 
-  let selectedChild:CubeChild;
+  let selectedChild: CubeChild;
 
   const upRoatation = () => {
     group.clear();
@@ -282,8 +283,8 @@ export default function RubiksCube() {
         } = intersects[0].object;
         if (selectedObject.object) {
           addSelectedObject(selectedObject.object);
-          for(let i = 0; i < cubeChildren.length; i++){
-            if(cubeChildren[i].box.uuid == selectedObject.uuid){
+          for (let i = 0; i < cubeChildren.length; i++) {
+            if (cubeChildren[i].box.uuid == selectedObject.uuid) {
               console.log(cubeChildren[i].axis);
               selectedChild = cubeChildren[i];
             }
@@ -298,10 +299,28 @@ export default function RubiksCube() {
     });
   }, []);
 
+  const navigate = useNavigate();
+
+  const backHome = () => {
+    navigate("/home");
+  };
+
   return (
     <div>
       <div id="container">
         <>
+          <Button type="primary" className="exit-button" onClick={backHome}>
+            Exit Game
+          </Button>
+          <Button type="primary" className="scramble-button">
+            Random Scramble
+          </Button>
+          <Button type="primary" className="reset-button">
+            Reset
+          </Button>
+          <Button type="primary" className="hint-button">
+            Hint
+          </Button>
           <FloatButton
             icon={<ArrowUpOutlined />}
             type="primary"

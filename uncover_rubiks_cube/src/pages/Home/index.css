@@ -1,0 +1,16 @@
+.menu{
+  position: relative;
+  background-color: black;
+  color: #FFFFFF;
+}
+.logo{
+  height: 30px;
+  margin-top: 5px;
+  width: 100px;
+  margin-left: 10px;
+}
+.play-button{
+  position: absolute;
+  top: 500px;
+  right: 100px;
+}
