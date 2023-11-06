@@ -6,4 +6,12 @@ export type CubeChild = {
       y: number;
       z: number;
   };
+  positions: {
+    R: number,
+    L: number,
+    U: number,
+    D: number,
+    F: number,
+    B: number,
+  }
 };

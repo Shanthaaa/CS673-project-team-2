@@ -5,8 +5,10 @@ from flask import Flask, request, jsonify
 from algorithm import solve
 from config import SERVER_HOST, SERVER_PORT, API_VERSION, DEBUG
 import os
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # file path
 CUBE_STATUS_FILE = os.path.join(os.path.dirname(__file__), 'cube_status.txt')
