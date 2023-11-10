@@ -2,7 +2,7 @@
 
 from error_handler import handle_value_error, handle_key_error, handle_general_error
 from flask import Flask, request, jsonify
-from algorithm import solve
+from algorithm import solve, generate_random_state
 from config import SERVER_HOST, SERVER_PORT, API_VERSION, DEBUG
 import os
 from flask_cors import CORS
@@ -63,6 +63,15 @@ def reset_cube_status():
         with open(CUBE_STATUS_FILE, 'w') as f:
             f.write(DEFAULT_CUBE_STATUS)
         return jsonify(message="Cube status reset successfully")
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+
+# New endpoint for generating a random cube state
+@app.route(f'/{API_VERSION}/generate_random_cube', methods=['GET'])
+def generate_random_cube():
+    try:
+        random_state = generate_random_state()
+        return jsonify(cube_status=random_state)
     except Exception as e:
         return jsonify(error=str(e)), 500
 
