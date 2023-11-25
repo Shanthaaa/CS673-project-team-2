@@ -16,3 +16,8 @@ def generate_random_state(num_moves=25):
              "U2", "D2", "L2", "R2", "F2", "B2"]
     scramble = " ".join(random.choices(moves, k=num_moves))
     return scramble
+
+def get_random_cube_state(file_path: str) -> str:
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+    return random.choice(lines).strip()
