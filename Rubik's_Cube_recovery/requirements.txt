@@ -1,2 +1,3 @@
 Flask
 kociemba
+flask_cors
