@@ -1,0 +1,15 @@
+.hint-card-container{
+  position: absolute;
+}
+.hint-card{
+  min-width: 300px;
+}
+.selected-step{
+  font-size: 25px;
+  font-weight: 800;
+  color: #1677ff;
+  margin: 5px;
+}
+.unseleted-step{
+  margin: 5px;
+}
