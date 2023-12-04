@@ -23,6 +23,7 @@ import initEnv from "../../utils/initEnv";
 import {
   getCubeStatusAPI,
   getHintAPI,
+  getRandomCube,
   resetCubeStatusAPI,
   setCubeStatusAPI,
 } from "../../services/RubiksCube";
@@ -153,6 +154,16 @@ export default function RubiksCube() {
     }
   };
 
+  const randomScramble = async () => {
+    const res = await getRandomCube();
+    setColor(res.data.cube_state, cubeChildren);
+    group.clear();
+    for (let i = 0; i < cubeChildren.length; i++) {
+      rotatedGroup[i].clear();
+      rotatedGroup[i].add(cubeChildren[i].cube, cubeChildren[i].box);
+    }
+  }
+
   const reset = async () => {
     await resetCubeStatusAPI();
     const res = await getCubeStatusAPI();
@@ -259,7 +270,7 @@ export default function RubiksCube() {
           <Button type="primary" className="exit-button" onClick={backHome}>
             Exit Game
           </Button>
-          <Button type="primary" className="scramble-button">
+          <Button type="primary" className="scramble-button" onClick={randomScramble}>
             Random Scramble
           </Button>
           <Button type="primary" className="reset-button" onClick={reset}>

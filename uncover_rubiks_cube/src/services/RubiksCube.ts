@@ -1,4 +1,4 @@
-import { CubeData, Solution } from "../types/http";
+import { CubeData, RandomCube, Solution } from "../types/http";
 import { http } from "../utils/http";
 
 export const resetCubeStatusAPI = () => {
@@ -33,4 +33,11 @@ export const getHintAPI = (cubeStatus: string) => {
       cube_state: cubeStatus,
     },
   });
-}
+};
+
+export const getRandomCube = () => {
+  return http<RandomCube>({
+    method: "get",
+    url: "/v1/get_exercise_cube",
+  });
+};
