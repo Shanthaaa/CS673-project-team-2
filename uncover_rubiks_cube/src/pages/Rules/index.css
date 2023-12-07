@@ -1,0 +1,17 @@
+.rules-container{
+  margin: 10%;
+}
+.rules-title{
+  color: white;
+  font-size: 50px;
+  font-weight: 800;
+  text-align: center;
+  margin: 30px;
+}
+.rules-content{
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px;
+}

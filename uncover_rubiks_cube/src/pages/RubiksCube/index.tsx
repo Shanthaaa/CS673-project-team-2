@@ -28,6 +28,7 @@ import {
   setCubeStatusAPI,
 } from "../../services/RubiksCube";
 import getAxisAndAngle from "../../utils/getAxisAndAngle";
+import CustomizeCube from "./components/CustomizeCube";
 
 export default function RubiksCube() {
   const initalGroup: THREE.Group[] = [];
@@ -157,12 +158,13 @@ export default function RubiksCube() {
   const randomScramble = async () => {
     const res = await getRandomCube();
     setColor(res.data.cube_state, cubeChildren);
+    console.log("cube_state", res.data.cube_state);
     group.clear();
     for (let i = 0; i < cubeChildren.length; i++) {
       rotatedGroup[i].clear();
       rotatedGroup[i].add(cubeChildren[i].cube, cubeChildren[i].box);
     }
-  }
+  };
 
   const reset = async () => {
     await resetCubeStatusAPI();
@@ -184,8 +186,19 @@ export default function RubiksCube() {
 
   const getHint = async () => {
     const cubeStatus = getColor(cubeChildren);
+    console.log("getHint", cubeStatus);
     const res = await getHintAPI(cubeStatus);
+    console.log(res);
     hintCard.current?.setHint(res.data.solution);
+  };
+
+  const setCustomData = (cubeStatus: string) => {
+    setColor(cubeStatus, cubeChildren);
+    group.clear();
+    for (let i = 0; i < cubeChildren.length; i++) {
+      rotatedGroup[i].clear();
+      rotatedGroup[i].add(cubeChildren[i].cube, cubeChildren[i].box);
+    }
   };
 
   useEffect(() => {
@@ -270,7 +283,15 @@ export default function RubiksCube() {
           <Button type="primary" className="exit-button" onClick={backHome}>
             Exit Game
           </Button>
-          <Button type="primary" className="scramble-button" onClick={randomScramble}>
+          <CustomizeCube
+            className="customize-button"
+            setCustomData={setCustomData}
+          />
+          <Button
+            type="primary"
+            className="scramble-button"
+            onClick={randomScramble}
+          >
             Random Scramble
           </Button>
           <Button type="primary" className="reset-button" onClick={reset}>

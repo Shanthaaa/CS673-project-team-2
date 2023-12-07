@@ -9,7 +9,15 @@
   font-weight: 800;
   color: #1677ff;
   margin: 5px;
+  cursor: pointer;
+}
+.selected-step:hover{
+  opacity: 0.5;
 }
 .unseleted-step{
   margin: 5px;
+  cursor: pointer;
+}
+.unseleted-step:hover{
+  opacity: 0.5;
 }

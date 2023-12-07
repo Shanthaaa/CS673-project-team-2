@@ -8,23 +8,28 @@
   top: 5px;
   right: 5px;
 }
-.scramble-button{
+.customize-button{
   position: absolute;
   top: 50px;
   right: 5px;
 }
-.reset-button{
+.scramble-button{
   position: absolute;
   top: 95px;
   right: 5px;
 }
-.hint-button{
+.reset-button{
   position: absolute;
   top: 140px;
   right: 5px;
 }
-.save-button{
+.hint-button{
   position: absolute;
   top: 185px;
+  right: 5px;
+}
+.save-button{
+  position: absolute;
+  top: 230px;
   right: 5px;
 }
