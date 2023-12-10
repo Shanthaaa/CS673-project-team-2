@@ -1,4 +1,5 @@
 This guidance document is available in English and Chinese versions/该指导文件有英文版和中文版两版
+
 After downloading the entire "Rubik's_Cube_recovery", use cmd to open the location of this file, and then test according to the following steps
 
 1.Environment preparation
@@ -7,9 +8,11 @@ python -m venv myenv
 where myenv is the name of the virtual environment, you can change it as needed.
 Then activate the virtual environment:
 .\myenv\Scripts\activate
+
 2. Install dependent libraries
 Enter the following command to install the dependent libraries:
 pip install -r requirements.txt
+
 3. Start the application
 Run the app using the following command:
 python main.py
@@ -24,6 +27,7 @@ Press CTRL+C to quit
   * Restarting with stat
   * Debugger is active!
   * Debugger PIN: 128-323-051
+
 4. Test the application
 Open a new cmd window and use the following command to perform input testing (the following commands are based on the sample output above):
 I. Rubik's Cube Restoration Test:
@@ -63,6 +67,7 @@ If successful, you will get output similar to the following:
    "cube_state": "DBLRURBBFLUDURRLFULUFFBDDBRLURDFRRDBBLULDUDBFDLFBLRFF"
 }
 Each time, any Rubik's Cube string will be selected from 10,000 saved random Rubik's Cubes and output, which can be used to practice solving the Rubik's Cube.
+
 5. End the test
 When you want to stop the application, just press Ctrl+C in the command line window running main.py.
 
@@ -76,9 +81,11 @@ python -m venv myenv
 其中myenv是虚拟环境的名称，你可以根据需要更改。
 然后激活虚拟环境：
 .\myenv\Scripts\activate
+
 2.安装依赖库
 输入如下指令安装依赖库：
 pip install -r requirements.txt
+
 3.启动应用
 使用以下命令运行应用：
 python main.py
@@ -93,6 +100,7 @@ Press CTRL+C to quit
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 128-323-051
+
 4.测试应用
 新开一个cmd窗口，使用如下命令进行输入测试（以下的命令基于如上的示例输出进行）：
 I.魔方复原测试：
@@ -132,6 +140,7 @@ curl http://127.0.0.1:5000/v1/get_exercise_cube
   "cube_state": "DBLRURBBFLUDURURLFULUFFBDDBRLURDFRRDBBLULDUDBFDLFBLRFF"
 }
 每次都会从10000个已保存的随机魔方中挑选任意一个魔方字符串输出，可用于练习复原魔方。
+
 5.结束测试
 当你想要停止应用时，只需在运行main.py的命令行窗口中按Ctrl+C。
 
