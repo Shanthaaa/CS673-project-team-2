@@ -30,12 +30,14 @@ Press CTRL+C to quit
 
 4. Test the application
 Open a new cmd window and use the following command to perform input testing (the following commands are based on the sample output above):
+
 I. Rubik's Cube Restoration Test:
 curl -X POST -H "Content-Type: application/json" -d "{\"cube_state\": \"DRLUUBFBRBLURRLRUBLRDDFDLFUFUFFDBRDUBRUFLLFDDBFLUBLRBD\"}" http://127.0.0.1:5000/v1/solve
 Among them, DRLUUBFBRBLURRLRUBLRDDFDLFUFUFFDBRDUBRUFLLFDDBFLUBLRBD can be replaced by any available code that represents the pre-recovery form of the Rubik's Cube. If successful, you will get output similar to the following:
 {
    "solution": "D2 R' D' F2 B D R2 D2 R' F2 D' F2 U' B2 L2 U2 D R2 U"
 }
+
 II. Reading test of saved Rubik’s cube data:
 curl -X GET http://127.0.0.1:5000/v1/get_cube_status
 If successful, you will get output similar to the following:
@@ -43,16 +45,19 @@ If successful, you will get output similar to the following:
    "cube_status": "UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLBBBBBBBBB"
 }
 UUUUUUUUURRRRRRRRRFFFFFFFDDDDDDDLLLLLLLBBBBBBBBB represents the status data of the saved Rubik's Cube. It will appear different depending on the saved Rubik's Cube. The default is "UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDLLLLLLLBBBBBBBBB"
+
 III. Test of updating Rubik’s Cube data:
 curl -X POST -H "Content-Type: application/json" -d "{\"cube_status\": \"DRLUUBFBRBLURRLRUBLRDDFDLFUFUFFDBRDUBRUFLLFDDBFLUBLRBD\"}" http://127.0.0.1:5000/v1/set_cube_status
 Among them, DRLUUBFBRBLURRLRUBLRDDFDLFUFUFFDBRDUBRUFLLFDDBFLUBLRBD can be replaced by any available code representing the shape of the Rubik's Cube. If successful, you will get output similar to the following:
 {
    "message": "Cube status updated successfully"
 }
+
 IV. Test to reset Rubik’s Cube data:
 curl -X POST http://127.0.0.1:5000/v1/reset_cube_status
 If successful, you will get output similar to the following:
 "message": "Cube status reset successfully"
+
 V. Steps to obtain randomly scrambled Rubik's Cube:
 curl http://127.0.0.1:5000/v1/generate_random_cube
 If successful, you will get output similar to the following:
@@ -60,6 +65,7 @@ If successful, you will get output similar to the following:
    "cube_status": "U' D B R2 F2 L2 R B2 R D2 R' D R2 F' R' D F' L F' L2 D2 F2 R F2 L'"
 }
 25 different scrambling steps will be randomly generated each time, which can be used to scramble the Rubik's Cube.
+
 VI. Randomly obtain a random Rubik's Cube from the saved Rubik's Cube practice set:
 curl http://127.0.0.1:5000/v1/get_exercise_cube
 If successful, you will get output similar to the following:
@@ -103,12 +109,14 @@ Press CTRL+C to quit
 
 4.测试应用
 新开一个cmd窗口，使用如下命令进行输入测试（以下的命令基于如上的示例输出进行）：
+
 I.魔方复原测试：
 curl -X POST -H "Content-Type: application/json" -d "{\"cube_state\": \"DRLUUBFBRBLURRLRUBLRDDFDLFUFUFFDBRDUBRUFLLFDDBFLUBLRBD\"}" http://127.0.0.1:5000/v1/solve
 其中DRLUUBFBRBLURRLRUBLRDDFDLFUFUFFDBRDUBRUFLLFDDBFLUBLRBD可以换为任意可用的表示魔方复原前形态的代码。如果成功的话，会得到类似如下的输出：
 {
   "solution": "D2 R' D' F2 B D R2 D2 R' F2 D' F2 U' B2 L2 U2 D R2 U"
 }
+
 II.已保存魔方数据的读取测试：
 curl -X GET http://127.0.0.1:5000/v1/get_cube_status
 如果成功的话，会得到类似如下的输出：
@@ -116,16 +124,19 @@ curl -X GET http://127.0.0.1:5000/v1/get_cube_status
   "cube_status": "UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB"
 }
 UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB表示已保存的魔方的状态数据，根据保存的魔方不同会出现不同，默认为“UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB”
+
 III.更新魔方数据的测试：
 curl -X POST -H "Content-Type: application/json" -d "{\"cube_status\": \"DRLUUBFBRBLURRLRUBLRDDFDLFUFUFFDBRDUBRUFLLFDDBFLUBLRBD\"}" http://127.0.0.1:5000/v1/set_cube_status
 其中DRLUUBFBRBLURRLRUBLRDDFDLFUFUFFDBRDUBRUFLLFDDBFLUBLRBD可以换为任意可用的表示魔方形态的代码。如果成功的话，会得到类似如下的输出：
 {
   "message": "Cube status updated successfully"
 }
+
 IV.重置魔方数据的测试：
 curl -X POST http://127.0.0.1:5000/v1/reset_cube_status
 如果成功的话，会得到类似如下的输出：
 "message": "Cube status reset successfully"
+
 V.获取随机打乱的魔方步骤：
 curl http://127.0.0.1:5000/v1/generate_random_cube
 如果成功的话，会得到类似如下的输出：
@@ -133,6 +144,7 @@ curl http://127.0.0.1:5000/v1/generate_random_cube
   "cube_status": "U' D B R2 F2 L2 R B2 R D2 R' D R2 F' R' D F' L F' L2 D2 F2 R F2 L'"
 }
 每次都会随机生成25个不同的打乱步骤，可用于打乱魔方。
+
 VI.随机获取已保存的魔方练习集的随机魔方：
 curl http://127.0.0.1:5000/v1/get_exercise_cube
 如果成功的话，会得到类似如下的输出：
