@@ -4,3 +4,6 @@ export type CubeData = {
 export type Solution = {
   solution: string;
 };
+export type RandomCube = {
+  cube_state: string;
+};

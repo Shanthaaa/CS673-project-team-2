@@ -1,9 +1,10 @@
 import * as THREE from "three";
+import { CubeChild } from "../types/common";
 
 export default function useCube(
   colors: THREE.ColorRepresentation[],
   axes: number[]
-) {
+): CubeChild {
   const geometry = new THREE.BoxGeometry(1, 1, 1);
   const material: THREE.MeshBasicMaterial[] = [];
   for (let i = 0; i < colors.length; i++) {

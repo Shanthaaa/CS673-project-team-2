@@ -31,5 +31,17 @@ export default (axis: THREE.Vector3, angle: number, cubeChild: CubeChild) => {
     cubeChild.positions.L = F;
     cubeChild.positions.B = L;
     cubeChild.positions.R = B;
+  }else if(axis.x === 0 && axis.y === 0 && axis.z === 1 && angle === -(Math.PI / 2)){
+    //U -> R, R -> D, D -> L, L -> U
+    cubeChild.positions.U = L;
+    cubeChild.positions.R = U;
+    cubeChild.positions.D = R;
+    cubeChild.positions.L = D;
+  }else if(axis.x === 0 && axis.y === 0 && axis.z === 1 && angle === Math.PI / 2){
+    //U -> L, L -> D, D -> R, R -> U
+    cubeChild.positions.U = R;
+    cubeChild.positions.L = U;
+    cubeChild.positions.D = L;
+    cubeChild.positions.R = D;
   }
 };

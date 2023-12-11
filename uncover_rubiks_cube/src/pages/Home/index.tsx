@@ -45,11 +45,13 @@ const items: MenuProps["items"] = [
 ];
 
 const Home: React.FC = () => {
-  const [current, setCurrent] = useState("mail");
+  const [current, setCurrent] = useState("");
 
   const onClick: MenuProps["onClick"] = (e) => {
-    console.log("click ", e);
     setCurrent(e.key);
+    if (e.key === "rules") {
+      navigate('/rules');
+    }
   };
 
   const navigate = useNavigate();

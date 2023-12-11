@@ -1,0 +1,49 @@
+.square{
+  width: 30px;
+  height: 30px;
+  margin: 1px 0;
+  cursor: pointer;
+}
+.center-square{
+  width: 30px;
+  height: 30px;
+  margin: 1px 0;
+}
+.square:hover{
+  background-color: #686666;
+}
+.container{
+  margin: 5px;
+  width: 94px;
+}
+.square-row{
+  display: flex;
+  justify-content: space-around;
+}
+.small-square{
+  width: 15px;
+  height: 15px;
+  margin: 1px;
+  cursor: pointer;
+}
+.color-panel{
+  display: flex;
+}
+.red{
+  background-color: #ff0000;
+}
+.blue{
+  background-color: #0000ff;
+}
+.green{
+  background-color: #00ff00;
+}
+.yellow{
+  background-color: #ffff00;
+}
+.purple{
+  background-color: #ff00ff;
+}
+.cyan{
+  background-color: #00ffff;
+}

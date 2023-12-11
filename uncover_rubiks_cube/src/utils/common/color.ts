@@ -78,3 +78,33 @@ export const mapPositionToIndex = (position: string): number => {
       return 0;
   }
 };
+
+enum SquareColor {
+  Red = "#ff0000",
+  Blue = "#0000ff",
+  Green = "#00ff00",
+  Yellow = "#ffff00",
+  Purple = "#ff00ff",
+  Cyan = "#00ffff",
+}
+
+const { Red, Blue, Green, Yellow, Purple, Cyan } = SquareColor;
+
+export const mapIndexToColor = (char: string) => {
+  switch (char) {
+    case "U":
+      return Purple;
+    case "R":
+      return Cyan;
+    case "F":
+      return Yellow;
+    case "D":
+      return Blue;
+    case "L":
+      return Red;
+    case "B":
+      return Green;
+    default:
+      return Purple;
+  }
+};

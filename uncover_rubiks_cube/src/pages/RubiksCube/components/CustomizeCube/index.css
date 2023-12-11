@@ -1,0 +1,8 @@
+.cube-container{
+  display: flex;
+  align-items: center;
+}
+.question-button{
+  position: absolute;
+  right: 100px;
+}
