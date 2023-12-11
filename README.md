@@ -1,8 +1,10 @@
 # CS673 Project Team 2 - Rubik's Cube Solver
 
 ## Team
-1. Yuchen Zheng - Backend Developer\n
-2. Xinyu Yang - Frontend Developer 3. Yuan Gao - UI Designer 4. Chandana Nandan - UI Designer and Document Writer 
+1. Yuchen Zheng - Backend Developer
+2. Xinyu Yang - Frontend Developer
+3. Yuan Gao - UI Designer
+4. Chandana Nandan - UI Designer and Documentation
 5. Shanthakumar Sivakumar - QA and PM 
 
 
