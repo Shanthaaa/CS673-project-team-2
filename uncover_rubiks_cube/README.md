@@ -16,7 +16,7 @@ This project provides a simulation of 3x3 Rubik's Cube and user can play it like
 - **Customize Rubik's Cube:** User can customize the state/exterior of the Rubik's Cube by selecting and setting colors to specific  squares.
 - **Random Scramble:** Randomly scramble the Rubik's Cube for user so user can play it immediately.
 - **Reset:** Uncover the Rubik's Cube at once.
-- **Hint: **Provide the steps of the most efficient way to uncover the Rubik's Cube and Rubik's Cube can rotated automatically following the steps.
+- **Hint:** Provide the steps of the most efficient way to uncover the Rubik's Cube and Rubik's Cube can rotated automatically following the steps.
 - **Save:** Save the current state of the Rubik's Cube for later playing.
 
 ## Technology Used
@@ -33,7 +33,7 @@ In the project directory, you can run:
 
 ### `npm install`
 
-Install relevent dependency for the project.
+Install relevant dependencies for the project.
 
 ### `npm start`
 
