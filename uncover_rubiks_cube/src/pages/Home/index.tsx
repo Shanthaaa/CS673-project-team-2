@@ -23,31 +23,31 @@ const items: MenuProps["items"] = [
     label: "Rules & Regulations",
     key: "rules",
     icon: <QuestionCircleOutlined />,
-    style: { position: "absolute", right: "500px" },
+    style: { position: "absolute", right: "50px" },
   },
-  {
-    label: "Progress Tracking",
-    key: "progress",
-    icon: <ClockCircleOutlined />,
-    style: { position: "absolute", right: "300px" },
-  },
-  {
-    label: "Settings",
-    key: "settings",
-    style: { position: "absolute", right: "100px" },
-    icon: <SettingOutlined />,
-    children: [
-      {
-        type: "group",
-        children: [
-          {
-            label: "Login",
-            key: "login",
-          },
-        ],
-      },
-    ],
-  },
+  // {
+  //   label: "Progress Tracking",
+  //   key: "progress",
+  //   icon: <ClockCircleOutlined />,
+  //   style: { position: "absolute", right: "300px" },
+  // },
+  // {
+  //   label: "Settings",
+  //   key: "settings",
+  //   style: { position: "absolute", right: "100px" },
+  //   icon: <SettingOutlined />,
+  //   children: [
+  //     {
+  //       type: "group",
+  //       children: [
+  //         {
+  //           label: "Login",
+  //           key: "login",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 ];
 
 const Home: React.FC = () => {
