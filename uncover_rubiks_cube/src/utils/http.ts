@@ -1,30 +1,33 @@
 import axios from "axios";
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 
-// 1. 利用axios对象的方法create，去创建一个axios实例
+//use axios.create to create an instance of axios
 const request = axios.create({
-  // 配置对象
-  baseURL: "http://127.0.0.1:5001", //基础路径，发送请求的时候，路径当中会出现api
-  timeout: 30000, //请求超时的时间5s
+  // configure instance
+  // base url for send request
+  baseURL: "http://127.0.0.1:5001",
+  //request timeout time is 30s
+  timeout: 30000,
 });
 
-// 请求拦截器：在发送请求之前，请求拦截器可以检测到，在请求发送之前处理一些事情
+//request interceptor will detect the request and handle something before sending the request
 request.interceptors.request.use((config) => {
-  // config: 是配置对象，该对象包含一个属性-->headers请求头
   return config;
 });
-// 响应拦截器：
+//response interceptor will handle something after receiving response 
 request.interceptors.response.use(
   (res) => {
-    // 成功的回调函数
+    //callback for successful response
     return res;
   },
   (error) => {
-    // 失败的回调函数
+    //callback for failure response
     return Promise.reject(error);
   }
 );
-
+/**
+ * return a promise with the result of response
+ */
 export const http = <T>(options: AxiosRequestConfig<any>) => {
   return new Promise<AxiosResponse<T>>((resolve, reject) => {
     request({

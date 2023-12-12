@@ -63,22 +63,28 @@ const CustomizeCube: React.FC<{
     }
   };
 
+  //set color to one side
   const setSideColorData = (side: Side, colors: string[]) => {
+    //collect color data for specific side
     let sideColorData = "";
     for (let i = 0; i < colors.length; i++) {
       sideColorData += mapColorToIndex(colors[i]);
     }
+    //set color data for specific side
     cubeColorData[side] = sideColorData;
     setCubeColorData({ ...cubeColorData });
     console.log("cubeColorData", cubeColorData);
+    //get the colors that have been set nine times
     const finishedColors = getFinishedColors(cubeColorData);
     setFinishedColors(finishedColors);
     console.log("finishedColors", finishedColors);
   };
 
+  //get the colors that have been set nine times
   const getFinishedColors = (cubeColorData: CubeColorData) => {
     const cubeColorSum = { U: 0, R: 0, F: 0, D: 0, L: 0, B: 0 };
     const finishedColor = [];
+    //calculate the times that every color has been set
     for (let key in cubeColorData) {
       let sideColor = cubeColorData[key as Side];
       for (let i = 0; i < sideColor.length; i++) {
@@ -86,6 +92,7 @@ const CustomizeCube: React.FC<{
         cubeColorSum[color as Side]++;
       }
     }
+    //collect the colors that have been set nine times
     for (let key in cubeColorSum) {
       if (cubeColorSum[key as Side] === 9) {
         finishedColor.push(mapIndexToColor(key));
@@ -104,11 +111,14 @@ const CustomizeCube: React.FC<{
     </div>
   );
 
+  //show the color setting modal
   const showModal = () => {
     setIsModalOpen(true);
   };
 
+  //finish color setting
   const handleOk = async () => {
+    //collect state data for Rubik's Cube
     const cubeStatus =
       cubeColorData.U +
       cubeColorData.R +
@@ -116,8 +126,10 @@ const CustomizeCube: React.FC<{
       cubeColorData.D +
       cubeColorData.L +
       cubeColorData.B;
+    //check whether the Rubik's Cube is valid
     const res = await getHintAPI(cubeStatus).catch((reason) => {
       console.log("reason", reason);
+      //if Rubik's Cube is invalid, show message
       messageApi.open({
         type: "error",
         content: "Invalid Rubik's Cube",
@@ -125,7 +137,9 @@ const CustomizeCube: React.FC<{
     });
     console.log("res", res);
     if (res) {
+      //if Rubik's Cube is valid, generate such Rubik's Cube
       setCustomData(cubeStatus);
+      //close color setting modal
       setIsModalOpen(false);
       setCubeColorData({
         U: "",
@@ -139,6 +153,7 @@ const CustomizeCube: React.FC<{
     }
   };
 
+  //cancel setting color
   const handleCancel = () => {
     setCubeColorData({
       U: "",

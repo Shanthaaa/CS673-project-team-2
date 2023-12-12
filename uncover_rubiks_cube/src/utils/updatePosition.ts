@@ -1,4 +1,8 @@
 import * as THREE from "three";
+
+/**
+ * update the coordinates of cubes of Rubik's Cube 
+ */
 export default (cubeChildren: {
   cube: THREE.Mesh<THREE.BoxGeometry, THREE.MeshBasicMaterial[], THREE.Object3DEventMap>;
   box: THREE.BoxHelper;

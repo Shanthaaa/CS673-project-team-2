@@ -1,6 +1,9 @@
 import { CubeChild } from "../types/common";
 import { mapAxisToPositon, mapPositionToIndex } from "./common/color";
 
+/**
+ * get color data of the Rubik's Cube
+ */
 export default (children: CubeChild[]) => {
   const cubeStatus = new Array(54);
   for (let i = 0; i < children.length; i++) {

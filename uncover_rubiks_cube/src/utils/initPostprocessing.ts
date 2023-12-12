@@ -11,8 +11,7 @@ export default (
   camera: THREE.PerspectiveCamera,
   controls: OrbitControls
 ) => {
-  //初始化
-  // postprocessing
+  // initialization postprocessing
   const size = renderer.getSize(new THREE.Vector2());
   const _pixelRatio = renderer.getPixelRatio();
   const _width = size.width;
@@ -48,39 +47,45 @@ export default (
 
   const outlineColor = [new THREE.Color(0xffffff), new THREE.Color(0xffffff)];
 
-  outlinePass.visibleEdgeColor.set(outlineColor[0]); // 边缘可见部分发颜色 sColor[0].color
-  outlinePass.hiddenEdgeColor.set(outlineColor[1]); // 边缘遮挡部分发光颜色 sColor[1].color
-  outlinePass.edgeStrength = Number(10.0); //边框的亮度
-  outlinePass.edgeGlow = Number(1); //光晕[0,1]
-  outlinePass.edgeThickness = Number(1.0); //边缘浓度
-  outlinePass.pulsePeriod = Number(10); //呼吸闪烁的速度 闪烁频率 ，默认0 ，值越大频率越低
-  outlinePass.usePatternTexture = false; //是否使用父级的材质
-  outlinePass.downSampleRatio = 2; // 边框弯曲度
+  //the color of the visible part of the edge
+  outlinePass.visibleEdgeColor.set(outlineColor[0]);
+  //the color of occlusion part of edge
+  outlinePass.hiddenEdgeColor.set(outlineColor[1]);
+  //the brightness of the border
+  outlinePass.edgeStrength = Number(10.0);
+  outlinePass.edgeGlow = Number(1);
+  outlinePass.edgeThickness = Number(1.0);
+  //flashing frequency
+  outlinePass.pulsePeriod = Number(10);
+  outlinePass.usePatternTexture = false;
+  //frame curvature
+  outlinePass.downSampleRatio = 2;
   outlinePass.clear = true;
 
-  //渲染函数
+  //render function
   function animate() {
     controls.update();
     requestAnimationFrame(animate);
-    //渲染
+    //perform rendering
     // renderer.render(scene, camera);
     composer.render();
   }
 
+  //start rendering
   animate();
 
-  //监听窗口变化
+  //listen the resize event for window
   window.addEventListener("resize", () => {
-    //重置渲染器宽高
+    //reset the width and height for renderer
     renderer.setSize(window.innerWidth, window.innerHeight);
     composer.setSize(window.innerWidth, window.innerHeight);
-    //重置相机宽高比
+    //reset the aspect ratio of camera
     camera.aspect = window.innerWidth / window.innerHeight;
-    //更新相机投影矩阵
+    //update camera projection matrix
     camera.updateProjectionMatrix();
   });
 
   return {
-    outlinePass
-  }
+    outlinePass,
+  };
 };

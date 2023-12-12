@@ -1,5 +1,8 @@
 import { CubeChild } from "../types/common";
 
+/**
+ * update the position of color
+ */
 export default (axis: THREE.Vector3, angle: number, cubeChild: CubeChild) => {
   const R = cubeChild.positions.R;
   const L = cubeChild.positions.L;

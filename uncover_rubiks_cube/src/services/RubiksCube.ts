@@ -1,20 +1,26 @@
 import { CubeData, RandomCube, Solution } from "../types/http";
 import { http } from "../utils/http";
-
+/**
+ * reset state data of Rubik's Cube 
+ */
 export const resetCubeStatusAPI = () => {
   return http({
     method: "POST",
     url: "/v1/reset_cube_status",
   });
 };
-
+/**
+ * get state data of Rubik's Cube 
+ */
 export const getCubeStatusAPI = () => {
   return http<CubeData>({
     method: "GET",
     url: "/v1/get_cube_status",
   });
 };
-
+/**
+ * set state data of Rubik's Cube 
+ */
 export const setCubeStatusAPI = (cubeStatus: string) => {
   return http({
     method: "POST",
@@ -24,7 +30,9 @@ export const setCubeStatusAPI = (cubeStatus: string) => {
     },
   });
 };
-
+/**
+ * get hint to uncover the Rubik's Cube 
+ */
 export const getHintAPI = (cubeStatus: string) => {
   return http<Solution>({
     method: "POST",
@@ -34,7 +42,9 @@ export const getHintAPI = (cubeStatus: string) => {
     },
   });
 };
-
+/**
+ * get state data of random Rubik's Cube 
+ */
 export const getRandomCube = () => {
   return http<RandomCube>({
     method: "get",

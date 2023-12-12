@@ -14,6 +14,7 @@ enum SquareColor {
 
 const { Red, Blue, Green, Yellow, Purple, Cyan } = SquareColor;
 
+//three rows for one side
 const row1 = [0, 1, 2];
 const row2 = [3, 4, 5];
 const row3 = [6, 7, 8];
@@ -47,6 +48,7 @@ const OneSide: React.FC<{
     "#ccc",
   ]);
 
+  //set color to one square
   const setSquareColor = (color: SquareColor) => {
     colorData[square] = color;
     setSideColorData(side, colorData);
@@ -54,10 +56,14 @@ const OneSide: React.FC<{
   };
 
   useEffect(() => {
+    //when component is mounted
+    //set initial color data to specific side
     setSideColorData(side, colorData);
     console.log(side, "setSideColorData");
   }, []);
 
+  //color picker
+  //show colors that have been set less than nine times
   const colorPanel = (
     <div className="color-panel">
       {colorSet.map((item, index) => {
@@ -72,6 +78,7 @@ const OneSide: React.FC<{
     </div>
   );
 
+  //square wrapped by color picker
   const squareWithColorPicker = (v: number) => {
     return (
       <Popover
@@ -89,6 +96,7 @@ const OneSide: React.FC<{
     );
   };
 
+  //square isn't wrapped by color picker
   const squareWithoutColorPicker = (
     <div
       key={"center-square"}

@@ -19,19 +19,25 @@ const HintCard: ForwardRefRenderFunction<
   useImperativeHandle(ref, () => ({
     setHint,
   }));
+  //set hint content to hint card and show rotate by hint button
   const setHint = (solution: string) => {
     setHintContent(solution);
     setShowButton(true);
     setShowHint(true);
   };
+  //rotate by one step from the hint
   const rotateOneStep = () => {
+    //get current hint step
     const hint = hintContent.split(" ")[index];
+    //update index for next step
     setIndex(index + 1);
+    //hide rotate by hint button and hint content when all steps are finished
     if (index + 1 === hintContent.split(" ").length) {
       setShowButton(false);
       setShowHint(false);
       setIndex(0);
     }
+    //rotate Rubik's Cube by one step from the hint
     rotateByHint(hint);
   };
 
@@ -53,6 +59,7 @@ const HintCard: ForwardRefRenderFunction<
         return "no face";
     }
   };
+  //generate detail message for hint
   const translateHint = (hint: string) => {
     const face = mapIndexToFace(hint[0]);
     const angle =

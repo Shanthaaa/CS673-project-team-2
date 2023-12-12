@@ -1,5 +1,8 @@
 import { TargetAxis } from "../types/common";
 
+/**
+ * return axis and value related to rotation according the hint
+ */
 export default (hint: string) => {
   const targetAxis: TargetAxis = { axis: "x", value: 1 };
   const angle =
