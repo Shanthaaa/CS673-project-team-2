@@ -34,4 +34,15 @@ Our project combines cutting-edge web technologies, including Three.js, React, H
 - Node.js
 - Python
 
+## Features
+
+- **Rotation:** User can rotate the Rubik's Cube in six directions: left, right, up, down, clockwise and counterclockwise.
+- **Customize Rubik's Cube:** User can customise the state/exterior of the Rubik's Cube by selecting and setting colours to specific squares.
+- **Random Scramble:** Randomly scramble the Rubik's Cube for the user so the user can play it immediately.
+- **Reset:** Uncover the Rubik's Cube at once.
+- **Hint:** Provide the steps of the most efficient way to uncover the Rubik's Cube, and the Rubik's Cube can rotated automatically following the steps.
+- **Save:** Save the current state of the Rubik's Cube for later playing.
+
+##Please reach out to us if you are facing any difficulty, and we can help you guide you through the demo of the project.
+
 
