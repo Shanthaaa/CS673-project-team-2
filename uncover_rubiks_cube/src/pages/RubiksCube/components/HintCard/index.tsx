@@ -18,6 +18,7 @@ const HintCard: ForwardRefRenderFunction<
   const [index, setIndex] = useState(0);
   useImperativeHandle(ref, () => ({
     setHint,
+    clearHint
   }));
   //set hint content to hint card and show rotate by hint button
   const setHint = (solution: string) => {
@@ -69,6 +70,12 @@ const HintCard: ForwardRefRenderFunction<
         ? "180"
         : "clockwise 90";
     return `turn ${face} ${angle} degrees`;
+  };
+
+  const clearHint = () => {
+    setShowButton(false);
+    setShowHint(false);
+    setIndex(0);
   };
   return (
     <div className="hint-card-container">

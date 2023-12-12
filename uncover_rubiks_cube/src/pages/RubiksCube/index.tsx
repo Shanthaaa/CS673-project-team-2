@@ -49,7 +49,10 @@ export default function RubiksCube() {
   const rotatedGroup = initalGroup;
 
   //used to get the instance of HintCard
-  const hintCard = useRef<{ setHint: (solution: string) => {} }>(null);
+  const hintCard = useRef<{
+    setHint: (solution: string) => {};
+    clearHint: () => void;
+  }>(null);
   //memorize selected cube
   let selectedChild: CubeChild;
 
@@ -73,6 +76,9 @@ export default function RubiksCube() {
     targetAxis?: TargetAxis,
     angle?: number
   ) => {
+    if (!targetAxis) {
+      hintCard.current?.clearHint();
+    }
     let axis: THREE.Vector3 = new THREE.Vector3(0, 0, 0);
     let targetValue = 0;
     //if angle is undefined, angle is set to zero
@@ -138,7 +144,7 @@ export default function RubiksCube() {
             : cubeChildren[i].axis.z;
       }
       if (compareAxis === targetValue) {
-        //the cube will perform rotation 
+        //the cube will perform rotation
         //clear corresponding rotated group
         rotatedGroup[i].clear();
         //add this cube and its box into the rotated group
@@ -273,7 +279,7 @@ export default function RubiksCube() {
       scene.add(...rotatedGroup);
       scene.add(group);
 
-      //initialize some tools for later use 
+      //initialize some tools for later use
       const { camera, renderer, controls, raycaster, mouse, selectedObjects } =
         initEnv(scene);
 
